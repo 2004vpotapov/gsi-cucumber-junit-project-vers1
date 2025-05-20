@@ -36,4 +36,7 @@ Given the user is on the home page
   And user enter Job Title
   And user enter Fist Name
   And user enter Last Name
-
+  And user enter Primary Phone
+  And user enter Contact Email Address
+  And user enter Confirm Contact Email Address
+  And user select a Method prefer to receive notification

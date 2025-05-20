@@ -186,5 +186,29 @@ public class Registration_StepDef {
         registrationEmpDefaultPage.lastName.sendKeys(faker.name().lastName());
     }
 
+    @When("user enter Primary Phone")
+    public void user_enter_primary_phone() {
+        registrationEmpDefaultPage.phoneFirstInputBox.sendKeys("123");
+        registrationEmpDefaultPage.phoneSecondInputBox.sendKeys("123");
+        registrationEmpDefaultPage.phoneThirdInputBox.sendKeys("1234");
+    }
+    @When("user enter Contact Email Address")
+    public void user_enter_contact_email_address() {
+        registrationEmpDefaultPage.contactEmailAddress.sendKeys(ConfigurationReader.getProperty("contact_Email_Address"));
+
+    }
+    @When("user enter Confirm Contact Email Address")
+    public void user_enter_confirm_contact_email_address() {
+        registrationEmpDefaultPage.confirmContactEmailAddress.sendKeys(ConfigurationReader.getProperty("contact_Email_Address"));
+    }
+
+    @When("user select a Method prefer to receive notification")
+    public void user_select_a_methode_prefer_to_receive_notification() {
+        Select select = new Select(registrationEmpDefaultPage.methodPreferToReceive);
+        select.selectByVisibleText("Email (If Available)");
+
+
+
+    }
 
 }

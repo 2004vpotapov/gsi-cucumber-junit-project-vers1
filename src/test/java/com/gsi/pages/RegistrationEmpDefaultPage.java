@@ -47,18 +47,41 @@ public class RegistrationEmpDefaultPage {
     public WebElement mailingZipPostal;
 
 
-    @FindBy(id="ctl00_Main_content_ucContact_txtTitle")
+    @FindBy(id = "ctl00_Main_content_ucContact_txtTitle")
     public WebElement jobTitle;
 
 
-    @FindBy(id="ctl00_Main_content_ucContact_txtFirstName")
+    @FindBy(id = "ctl00_Main_content_ucContact_txtFirstName")
     public WebElement firstName;
 
 
-     @FindBy(id="ctl00_Main_content_ucContact_txtLastName")
+    @FindBy(id = "ctl00_Main_content_ucContact_txtLastName")
     public WebElement lastName;
-    /*
-     @FindBy(id="")
+
+
+    @FindBy(id = "ctl00_Main_content_ucContact_txtPrimePhone1")
+    public WebElement phoneFirstInputBox;
+
+    @FindBy(id = "ctl00_Main_content_ucContact_txtPrimePhone2")
+    public WebElement phoneSecondInputBox;
+
+    @FindBy(id = "ctl00_Main_content_ucContact_txtPrimePhone3")
+    public WebElement phoneThirdInputBox;
+
+
+    @FindBy(id = "ctl00_Main_content_ucContact_txtEmail")
+    public WebElement contactEmailAddress;
+
+    @FindBy(id = "ctl00_Main_content_ucContact_txtConfirmEmail")
+    public WebElement confirmContactEmailAddress;
+
+
+    @FindBy(id="ctl00_Main_content_ucContact_ddlPreferNotification")
+    public WebElement methodPreferToReceive;
+
+
+/*
+    @FindBy(id="")
     public WebElement ;
 
  */
