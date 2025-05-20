@@ -45,3 +45,4 @@ Given the user is on the home page
   And user select link industries by Industry Code
   And user enter industry code into inputBox and click Search button
   And user click to link Industry code to confirm
+  And user click Save and Continue button

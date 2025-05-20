@@ -104,10 +104,12 @@ public class RegistrationEmpDefaultPage {
     public WebElement industryCodeButtonToConfirm;
 
 
-    /*
-    @FindBy(id="")
-    public WebElement industryCodeButtonToConfirm;
 
+    @FindBy(id="ctl00_Main_content_btnSave")
+    public WebElement saveAndContinueBtn;
+
+
+/*
     @FindBy(id="")
     public WebElement industryCodeButtonToConfirm;
 

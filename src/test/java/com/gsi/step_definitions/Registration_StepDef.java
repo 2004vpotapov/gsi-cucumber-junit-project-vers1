@@ -250,6 +250,15 @@ public class Registration_StepDef {
     @And("user click to link Industry code to confirm")
     public void userClickToLinkIndustryCodeToConfirm() {
         registrationEmpDefaultPage.industryCodeButtonToConfirm.click();
+    }
 
+    @And("user click Save and Continue button")
+    public void userClickSaveAndContinueButton() {
+
+        Driver.getDriver().switchTo().window(mainWindowHandle);//switch back to main window
+        String lastURL = Driver.getDriver().getCurrentUrl();
+        System.out.println("URL registration/emp/default = " + lastURL);
+        actions.moveToElement(registrationEmpDefaultPage.saveAndContinueBtn).perform();
+        registrationEmpDefaultPage.saveAndContinueBtn.click();
     }
 }
