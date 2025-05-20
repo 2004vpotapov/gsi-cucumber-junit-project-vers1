@@ -31,7 +31,9 @@ Given the user is on the home page
   And user enter ZipCode
   And user click at empty space
   And user enter Street Address One
-
-
-
+  And user enter Mailing Address One
+  And user enter Mailing ZipPostal
+  And user enter Job Title
+  And user enter Fist Name
+  And user enter Last Name
 

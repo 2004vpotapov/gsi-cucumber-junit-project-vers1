@@ -8,6 +8,7 @@ import com.gsi.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -157,5 +158,33 @@ public class Registration_StepDef {
 
     @And("user enter Street Address One")
     public void userEnterStreetAddressOne() {
+        registrationEmpDefaultPage.streetAddressOne.sendKeys(faker.address().streetAddress());
     }
+
+    @When("user enter Mailing Address One")
+    public void user_enter_mailing_address_one() {
+        registrationEmpDefaultPage.mailingAddressOne.sendKeys(faker.address().streetAddress());
+
+    }
+    @When("user enter Mailing ZipPostal")
+    public void user_enter_mailing_zip_postal() {
+        registrationEmpDefaultPage.mailingZipPostal.sendKeys(ConfigurationReader.getProperty("zipCode"));
+    }
+
+    @When("user enter Job Title")
+    public void user_enter_job_title() {
+        registrationEmpDefaultPage.jobTitle.sendKeys(faker.name().title());
+
+    }
+    @When("user enter Fist Name")
+    public void user_enter_fist_name() {
+
+        registrationEmpDefaultPage.firstName.sendKeys(faker.name().firstName());
+    }
+    @When("user enter Last Name")
+    public void user_enter_last_name() {
+        registrationEmpDefaultPage.lastName.sendKeys(faker.name().lastName());
+    }
+
+
 }
