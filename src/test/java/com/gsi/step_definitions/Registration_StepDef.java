@@ -1,9 +1,7 @@
 package com.gsi.step_definitions;
 
-import com.gsi.pages.DefaultPage;
-import com.gsi.pages.LoginIntro2Page;
-import com.gsi.pages.RegistrationEmpRegistrationTypePage;
-import com.gsi.pages.RegistrationEmpTaxRegistrationPage;
+import com.github.javafaker.Faker;
+import com.gsi.pages.*;
 import com.gsi.utilities.BrowserUtils;
 import com.gsi.utilities.ConfigurationReader;
 import com.gsi.utilities.Driver;
@@ -21,11 +19,17 @@ import java.time.Duration;
 
 public class Registration_StepDef {
     Actions actions = new Actions(Driver.getDriver());
+
+    Faker faker = new Faker();
+    String username;
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
     DefaultPage defaultPage = new DefaultPage();
     LoginIntro2Page loginIntro2Page = new LoginIntro2Page();
     RegistrationEmpRegistrationTypePage registrationEmpRegistrationTypePage = new RegistrationEmpRegistrationTypePage();
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+
     RegistrationEmpTaxRegistrationPage registrationEmpTaxRegistrationPage = new RegistrationEmpTaxRegistrationPage();
+
+    RegistrationEmpDefaultPage registrationEmpDefaultPage = new RegistrationEmpDefaultPage();
 
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
@@ -45,7 +49,7 @@ public class Registration_StepDef {
         actions.moveToElement(loginIntro2Page.EmployersAndAgentsRegistrationButton).click().perform();
     }
 
-    //Registration/Emp/RegistrationType page
+    //Registration/Emp/RegistrationType page=====================================================
     @And("use click Close button on a Red banner")
     public void useClickCloseButtonOnARedBanner() {
         registrationEmpRegistrationTypePage.closeBtn.click();
@@ -74,7 +78,7 @@ public class Registration_StepDef {
         actions.moveToElement(registrationEmpRegistrationTypePage.continueRegistrationBtn).click().perform();
     }
 
-    //Registration/emp/TaxRegistration page
+    //Registration/Emp/TaxRegistration page
     @And("user select Do you have a UI EAN radioButton")
     public void userSelectDoYouHaveAUIEANRadioButton() {
         registrationEmpTaxRegistrationPage.doYouHaveEANRadioBtn.click();
@@ -101,5 +105,57 @@ public class Registration_StepDef {
     public void userClickToContinueButton() {
         actions.moveToElement(registrationEmpTaxRegistrationPage.continueBtn).click().perform();
 
+    }
+
+    //Registration/Emp/Default===================================================================
+    @And("user enter User name")
+    public void userEnterUserName() {
+        username = faker.name().username();
+        registrationEmpDefaultPage.useNameInputBox.sendKeys(username);
+    }
+
+    @And("user enter Password")
+    public void userEnterPassword() {
+        registrationEmpDefaultPage.passwordInputBox.sendKeys(ConfigurationReader.getProperty("password"));
+    }
+
+    @And("user enter Confirm Password")
+    public void userEnterConfirmPassword() {
+        registrationEmpDefaultPage.confirmPasswordInputBox.sendKeys(ConfigurationReader.getProperty("password"));
+    }
+
+    @And("Security Question")
+    public void securityQuestion() {
+        Select select = new Select(registrationEmpDefaultPage.securityQuestionDropDown);
+        select.selectByVisibleText("What is your pet's name?");
+    }
+
+    @And("Security Question Response")
+    public void securityQuestionResponse() {
+        registrationEmpDefaultPage.securityQuestionResponse.sendKeys(faker.name().name());
+    }
+
+    @And("user enter Legal Company name")
+    public void userEnterLegalCompanyName() {
+        registrationEmpDefaultPage.legalCompanyNameInputBox.sendKeys(faker.company().name());
+    }
+
+    @And("user enter Trade Name")
+    public void userEnterTradeName() {
+        registrationEmpDefaultPage.tradeNameInputBox.sendKeys(faker.company().name());
+    }
+
+    @And("user enter ZipCode")
+    public void userEnterZipCode() {
+        registrationEmpDefaultPage.zipCode.sendKeys(ConfigurationReader.getProperty("zipCode"));
+    }
+
+    @And("user click at empty space")
+    public void userClickAtEmptySpace() {
+        actions.moveByOffset(0, 0).click().perform();
+    }
+
+    @And("user enter Street Address One")
+    public void userEnterStreetAddressOne() {
     }
 }

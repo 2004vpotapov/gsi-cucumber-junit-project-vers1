@@ -20,5 +20,18 @@ Given the user is on the home page
   And user select Do you have a FEIN
   And user select Reason from dropDown
   And user click to Continue button
+  #Registration/emp/default
+  And user enter User name
+  And user enter Password
+  And user enter Confirm Password
+  And Security Question
+  And Security Question Response
+  And user enter Legal Company name
+  And user enter Trade Name
+  And user enter ZipCode
+  And user click at empty space
+  And user enter Street Address One
+
+
 
 
