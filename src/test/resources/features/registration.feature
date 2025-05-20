@@ -40,3 +40,8 @@ Given the user is on the home page
   And user enter Contact Email Address
   And user enter Confirm Contact Email Address
   And user select a Method prefer to receive notification
+  And user click to link Industry Title NAICS
+  And user switch to drills-industry-inddrill window
+  And user select link industries by Industry Code
+  And user enter industry code into inputBox and click Search button
+  And user click to link Industry code to confirm

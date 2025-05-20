@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.Key;
 import java.time.Duration;
+import java.util.Set;
 
 public class Registration_StepDef {
     Actions actions = new Actions(Driver.getDriver());
@@ -31,6 +32,8 @@ public class Registration_StepDef {
     RegistrationEmpTaxRegistrationPage registrationEmpTaxRegistrationPage = new RegistrationEmpTaxRegistrationPage();
 
     RegistrationEmpDefaultPage registrationEmpDefaultPage = new RegistrationEmpDefaultPage();
+
+    String mainWindowHandle;
 
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
@@ -207,8 +210,46 @@ public class Registration_StepDef {
         Select select = new Select(registrationEmpDefaultPage.methodPreferToReceive);
         select.selectByVisibleText("Email (If Available)");
 
+    }
 
+    @And("user click to link Industry Title NAICS")
+    public void userClickToLinkIndustryTitleNAICS() {
+        actions.moveToElement(registrationEmpDefaultPage.searchForIndustryCode).perform();
+        BrowserUtils.waitFor(2);
+        registrationEmpDefaultPage.searchForIndustryCode.click();
+    }
+
+    @And("user switch to drills-industry-inddrill window")
+    public void user_Switch_To_Drills_Industry_Inddrill_Window() {
+        mainWindowHandle = Driver.getDriver().getWindowHandle();
+        System.out.println("mainWindowHandle = " + mainWindowHandle);
+        Set<String> allWindowHandles = Driver.getDriver().getWindowHandles();
+        for (String eachHandle : allWindowHandles) {
+            Driver.getDriver().switchTo().window(eachHandle);
+            if(Driver.getDriver().getCurrentUrl().contains("inddrill")){
+                break;
+            }
+        }
+        String newURL = Driver.getDriver().getCurrentUrl();
+        System.out.println("URL drills/industry/inddrill = " + newURL);
 
     }
 
+    @And("user select link industries by Industry Code")
+    public void user_Select_Link_Industries_By_Industry_Code() {
+        registrationEmpDefaultPage.industriesByIndustryCodeLink.click();
+
+    }
+
+    @And("user enter industry code into inputBox and click Search button")
+    public void userEnterIndustryCodeIntoInputBoxAndClickSearchButton() {
+        registrationEmpDefaultPage.industryCodeInputBox.sendKeys(ConfigurationReader.getProperty("industry_title_NAICS"));
+        registrationEmpDefaultPage.searchBtn.click();
+    }
+
+    @And("user click to link Industry code to confirm")
+    public void userClickToLinkIndustryCodeToConfirm() {
+        registrationEmpDefaultPage.industryCodeButtonToConfirm.click();
+
+    }
 }

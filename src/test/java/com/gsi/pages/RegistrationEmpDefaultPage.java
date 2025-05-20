@@ -1,5 +1,6 @@
 package com.gsi.pages;
 
+import com.github.javafaker.Code;
 import com.gsi.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -80,9 +81,39 @@ public class RegistrationEmpDefaultPage {
     public WebElement methodPreferToReceive;
 
 
-/*
+
+    @FindBy(xpath = "//a[@id='ctl00_Main_content_ucCompany_ucSelectNAICS_lnkSearchNaics']")
+    public WebElement searchForIndustryCode;
+
+
+
+    @FindBy(id="ctl00_Main_content_lnkIndCode")
+    public WebElement industriesByIndustryCodeLink;
+
+
+    @FindBy(id="ctl00_Main_content_txtIndCode")
+    public WebElement industryCodeInputBox;
+
+
+    @FindBy(id="ctl00_Main_content_btnIndCodeSearch")
+    public WebElement searchBtn;
+
+
+
+    @FindBy(xpath = "//a[@id='ctl00_Main_content_tvIndustryByNumbert1']")
+    public WebElement industryCodeButtonToConfirm;
+
+
+    /*
     @FindBy(id="")
-    public WebElement ;
+    public WebElement industryCodeButtonToConfirm;
+
+    @FindBy(id="")
+    public WebElement industryCodeButtonToConfirm;
+
+@FindBy(id="")
+    public WebElement industryCodeButtonToConfirm;
+
 
  */
 
