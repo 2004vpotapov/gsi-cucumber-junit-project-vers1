@@ -342,4 +342,53 @@ public class Registration_StepDef {
         registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleSecond.sendKeys("123");
         registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleThird.sendKeys("1234");
     }
+
+    @And("user select Have you previously had an account")
+    public void userSelectHaveYouPreviouslyHadAnAccount() {
+        actions.moveToElement(registrationEmpUnemploymentPage.haveYouPreviouslyHadAnAccount).perform();
+        registrationEmpUnemploymentPage.haveYouPreviouslyHadAnAccount.click();
+    }
+
+    @And("user select Have you reorganized")
+    public void userSelectHaveYouReorganized() {
+        actions.moveToElement(registrationEmpUnemploymentPage.haveYouReorganized).perform();
+        registrationEmpUnemploymentPage.haveYouReorganized.click();
+    }
+
+    @And("user select Are you liable under FUTA")
+    public void userSelectAreYouLiableUnderFUTA() {
+        actions.moveToElement(registrationEmpUnemploymentPage.futa).perform();
+        registrationEmpUnemploymentPage.futa.click();
+    }
+
+    @And("user select Has your organization employed")
+    public void userSelectHasYourOrganizationEmployed() {
+        actions.moveToElement(registrationEmpUnemploymentPage.hasYourOrganizationEmployed).perform();
+        registrationEmpUnemploymentPage.hasYourOrganizationEmployed.click();
+    }
+
+    @And("user select Did you or will you have total wages paid")
+    public void userSelectDidYouOrWillYouHaveTotalWagesPaid() {
+        actions.moveToElement(registrationEmpUnemploymentPage.didYouOrWillYouHaveTotal).perform();
+        registrationEmpUnemploymentPage.didYouOrWillYouHaveTotal.click();
+    }
+
+    @And("user select Earliast Quater")
+    public void userSelectEarliastQuater() {
+        Select select=new Select(registrationEmpUnemploymentPage.earliastQuater);
+        select.selectByVisibleText("First Quarter");
+    }
+
+    @And("user enter Year")
+    public void userEnterYear() {
+        actions.moveToElement(registrationEmpUnemploymentPage.enterYear).perform();
+        registrationEmpUnemploymentPage.enterYear.sendKeys("2023");
+    }
+
+    @And("user click Add Owner link")
+    public void userClickAddOwnerLink() {
+        actions.moveToElement( registrationEmpUnemploymentPage.addOwnerLink).perform();
+        registrationEmpUnemploymentPage.addOwnerLink.click();
+
+    }
 }

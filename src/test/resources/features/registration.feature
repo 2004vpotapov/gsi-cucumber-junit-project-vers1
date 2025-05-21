@@ -60,6 +60,15 @@ Given the user is on the home page
   And user select checkBox Will you be working in NE
   And user enter Name of Person Responsible
   And user enter Phone Number of Person Responsible
+  And user select Have you previously had an account
+  And user select Have you reorganized
+  And user select Are you liable under FUTA
+  And user select Has your organization employed
+  And user select Did you or will you have total wages paid
+  And user select Earliast Quater
+  And user enter Year
+  And user click Add Owner link
+
 
 
 

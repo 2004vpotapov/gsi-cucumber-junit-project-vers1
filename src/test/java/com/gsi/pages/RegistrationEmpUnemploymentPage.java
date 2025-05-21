@@ -50,12 +50,29 @@ public class RegistrationEmpUnemploymentPage {
     @FindBy(id="ctl00_Main_content_ucTaxProfile_txtPayrollPhone3")
     public WebElement phoneNumberOfPersonResponsibleThird;
 
+    @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbPreviousAccount_1")
+    public WebElement haveYouPreviouslyHadAnAccount;
 
-    /*
+    @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbReorganizedRestructured_1")
+    public WebElement haveYouReorganized;
 
-    @FindBy(id="")
-    public WebElement ;
+    @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbFUTA_1")
+    public WebElement futa;
 
-     */
+    @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rb20Week_1")
+    public WebElement hasYourOrganizationEmployed;
+
+    @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbWages_0")
+    public WebElement didYouOrWillYouHaveTotal;
+
+     @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_ddlQuarter")
+    public WebElement earliastQuater;
+
+     @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_txtYear")
+    public WebElement enterYear;
+
+    @FindBy(id="ctl00_Main_content_ucOwners_lnkAddOwner")
+    public WebElement addOwnerLink;
+
 
 }
