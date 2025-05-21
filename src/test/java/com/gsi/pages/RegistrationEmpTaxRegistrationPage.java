@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationEmpTaxRegistrationPage {
     public RegistrationEmpTaxRegistrationPage(){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
 

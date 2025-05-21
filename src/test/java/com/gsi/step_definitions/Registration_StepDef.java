@@ -35,6 +35,8 @@ public class Registration_StepDef {
 
     String mainWindowHandle;
 
+    RegistrationEmpTaxContactsPage registrationEmpTaxContactsPage = new RegistrationEmpTaxContactsPage();
+
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -260,5 +262,19 @@ public class Registration_StepDef {
         System.out.println("URL registration/emp/default = " + lastURL);
         actions.moveToElement(registrationEmpDefaultPage.saveAndContinueBtn).perform();
         registrationEmpDefaultPage.saveAndContinueBtn.click();
+    }
+
+    @And("use click to Use Primary CheckBox")
+    public void useClickToUsePrimaryCheckBox() {
+        actions.moveToElement(registrationEmpTaxContactsPage.usePrimaryCheckBox).perform();
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxContactsPage.usePrimaryCheckBox));
+        actions.moveToElement(registrationEmpTaxContactsPage.usePrimaryCheckBox).perform();
+        registrationEmpTaxContactsPage.usePrimaryCheckBox.click();
+    }
+
+    @And("user click to Continue button for Identify Contacts Page")
+    public void userClickToContinueButtonForIdentifyContactsPage() {
+        actions.moveToElement(registrationEmpTaxContactsPage.continueButton).perform();
+        registrationEmpTaxContactsPage.continueButton.click();
     }
 }
