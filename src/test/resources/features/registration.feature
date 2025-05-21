@@ -49,3 +49,18 @@ Given the user is on the home page
   #Registration/emp/TaxContacts
   And use click to Use Primary CheckBox
   And user click to Continue button for Identify Contacts Page
+  #Registration/Emp/Unemployment
+  And user select Type of Organization
+  And user select Type of Employment
+  And user enter Date first Employed
+  And user enter Number of Employees at Registration
+  And user enter Number of Wokers
+  And user enter Date of First Paid
+  And user select checkBox Are you presently reporting
+  And user select checkBox Will you be working in NE
+  And user enter Name of Person Responsible
+  And user enter Phone Number of Person Responsible
+
+
+
+

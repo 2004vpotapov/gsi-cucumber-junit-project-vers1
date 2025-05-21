@@ -37,6 +37,8 @@ public class Registration_StepDef {
 
     RegistrationEmpTaxContactsPage registrationEmpTaxContactsPage = new RegistrationEmpTaxContactsPage();
 
+    RegistrationEmpUnemploymentPage registrationEmpUnemploymentPage = new RegistrationEmpUnemploymentPage();
+
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -276,5 +278,68 @@ public class Registration_StepDef {
     public void userClickToContinueButtonForIdentifyContactsPage() {
         actions.moveToElement(registrationEmpTaxContactsPage.continueButton).perform();
         registrationEmpTaxContactsPage.continueButton.click();
+    }
+
+    @And("user select Type of Organization")
+    public void userSelectTypeOfOrganization() {
+        Select select = new Select(registrationEmpUnemploymentPage.typeOfOrganization);
+        select.selectByVisibleText("Individual - Sole Proprietorship");
+    }
+
+    @And("user select Type of Employment")
+    public void userSelectTypeOfEmployment() {
+        Select select =new Select(registrationEmpUnemploymentPage.typeOfEmployment);
+        select.selectByVisibleText("Regular (all regular business)");
+    }
+
+
+    @And("user enter Date first Employed")
+    public void userEnterDateFirstEmployed() {
+        registrationEmpUnemploymentPage.dateFirstEmployed.sendKeys("01/01/2023");
+    }
+
+    @And("user enter Number of Employees at Registration")
+    public void userEnterNumberOfEmployeesAtRegistration() {
+        registrationEmpUnemploymentPage.numberOfEmployeesAtRegistration.sendKeys("10");
+
+    }
+
+    @And("user enter Number of Wokers")
+    public void userEnterNumberOfWokers() {
+        registrationEmpUnemploymentPage.numberOfWokers.sendKeys("10");
+    }
+
+    @And("user enter Date of First Paid")
+    public void userEnterDateOfFirstPaid() {
+        registrationEmpUnemploymentPage.dateOfFirstPaid.sendKeys("1/15/2023");
+    }
+
+    @And("user select checkBox Are you presently reporting")
+    public void userSelectCheckBoxAreYouPresentlyReporting() {
+        actions.moveToElement(registrationEmpUnemploymentPage.AreYouPresentlyReporting).perform();
+        registrationEmpUnemploymentPage.AreYouPresentlyReporting.click();
+    }
+
+    @And("user select checkBox Will you be working in NE")
+    public void userSelectCheckBoxWillYouBeWorkingInNE() {
+        actions.moveToElement(registrationEmpUnemploymentPage.willYouBeWorkingInNE).perform();
+        registrationEmpUnemploymentPage.willYouBeWorkingInNE.click();
+
+    }
+
+    @And("user enter Name of Person Responsible")
+    public void userEnterNameOfPersonResponsible() {
+        actions.moveToElement(registrationEmpUnemploymentPage.nameOfPersonResponsibleFirstInputBox).perform();
+        registrationEmpUnemploymentPage.nameOfPersonResponsibleFirstInputBox.sendKeys(faker.name().firstName());
+        registrationEmpUnemploymentPage.nameOfPersonResponsibleSecondInputBox.sendKeys(faker.name().lastName());
+
+    }
+
+    @And("user enter Phone Number of Person Responsible")
+    public void userEnterPhoneNumberOfPersonResponsible() {
+        actions.moveToElement(registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleFirst).perform();
+        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleFirst.sendKeys("123");
+        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleSecond.sendKeys("123");
+        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleThird.sendKeys("1234");
     }
 }
