@@ -92,7 +92,15 @@ Given the user is on the home page
   And user enter Phone Number who can provide specific information
   And user select Is the primary purpose of the employee
   And user click Next Btn for General Employment Information Page
-
+  #Registration/emp/TaxDocumentUpload
+  And user click Next Button for Unemployment Benefits Services Page
+  #Registration/emp/TaxCertification
+  And user select This is to certify that all of the information
+  And user select person for SignIn om dropDown
+  And user enter to signIn
+  And user click to Save Btn for Tax Certification
+  #Registration/Emp/UIRegInstructions
+  And user click Continue button for Registration Complete
 
 
 

@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.checkerframework.checker.units.qual.C;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -45,6 +46,11 @@ public class Registration_StepDef {
 
     RegistrationEmpTaxGeneralInformationPage registrationEmpTaxGeneralInformationPage = new RegistrationEmpTaxGeneralInformationPage();
 
+    RegistrationEmpTaxDocumentUploadPage registrationEmpTaxDocumentUploadPage = new RegistrationEmpTaxDocumentUploadPage();
+
+    RegistrationEmpTaxCertificationPage registrationEmpTaxCertificationPage = new RegistrationEmpTaxCertificationPage();
+
+    RegistrationEmpUIRegInstructionsPage registrationEmpUIRegInstructionsPage = new RegistrationEmpUIRegInstructionsPage();
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -297,6 +303,7 @@ public class Registration_StepDef {
 
     @And("user select Type of Employment")
     public void userSelectTypeOfEmployment() {
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpUnemploymentPage.typeOfEmployment));
         Select select =new Select(registrationEmpUnemploymentPage.typeOfEmployment);
         select.selectByVisibleText("Regular (all regular business)");
     }
@@ -533,5 +540,61 @@ public class Registration_StepDef {
     public void userClickNextBtnForGeneralEmploymentInformationPage() {
         actions.moveToElement(registrationEmpTaxGeneralInformationPage.nextBtn).perform();
         registrationEmpTaxGeneralInformationPage.nextBtn.click();
+    }
+
+    @And("user click Next Button for Unemployment Benefits Services Page")
+    public void userClickNextButtonForUnemploymentBenefitsServicesPage() {
+        wait.until(ExpectedConditions.elementToBeClickable(registrationEmpTaxDocumentUploadPage.nextBtn));
+        actions.moveToElement(registrationEmpTaxDocumentUploadPage.nextBtn).perform();
+        registrationEmpTaxDocumentUploadPage.nextBtn.click();
+    }
+
+
+    @And("user select This is to certify that all of the information")
+    public void userSelectThisIsToCertifyThatAllOfTheInformation() {
+        wait.until(ExpectedConditions.elementToBeClickable(registrationEmpTaxCertificationPage.thisIsToCertify));
+        actions.moveToElement(registrationEmpTaxCertificationPage.thisIsToCertify).perform();
+        registrationEmpTaxCertificationPage.thisIsToCertify.click();
+    }
+
+    @And("user select person for SignIn om dropDown")
+    public void userSelectPersonForSignInOmDropDown() {
+        Select select = new Select(registrationEmpTaxCertificationPage.personForSignIn);
+        select.selectByIndex(1);
+    }
+
+    @And("user enter to signIn")
+    public void userEnterToSignIn() {
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxCertificationPage.signInField));
+        actions.moveToElement(registrationEmpTaxCertificationPage.signInField).perform();
+        registrationEmpTaxCertificationPage.signInField.click();
+/*
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0, 100)");
+
+        registrationEmpTaxCertificationPage.signInField.click();
+
+        js.executeScript("window.scrollBy(0, 100)");
+
+        registrationEmpTaxCertificationPage.signInField.click();
+
+ */
+
+    }
+    @And("user click to Save Btn for Tax Certification")
+    public void userClickToSaveBtnForTaxCertification() {
+        wait.until(ExpectedConditions.elementToBeClickable(registrationEmpTaxCertificationPage.saveBtn));
+        actions.moveToElement(registrationEmpTaxCertificationPage.saveBtn).perform();
+        registrationEmpTaxCertificationPage.saveBtn.click();
+    }
+
+
+    @And("user click Continue button for Registration Complete")
+    public void userClickContinueButtonForRegistrationComplete() {
+        wait.until(ExpectedConditions.elementToBeClickable(registrationEmpUIRegInstructionsPage.continueBtn));
+        actions.moveToElement(registrationEmpUIRegInstructionsPage.continueBtn).perform();
+        registrationEmpUIRegInstructionsPage.continueBtn.click();
+
+
     }
 }
