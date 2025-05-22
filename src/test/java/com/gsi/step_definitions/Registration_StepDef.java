@@ -362,6 +362,12 @@ public class Registration_StepDef {
         registrationEmpUnemploymentPage.haveYouReorganized.click();
     }
 
+    @And("use select Have you acquired another business")
+    public void useSelectHaveYouAcquiredAnotherBusiness() {
+        actions.moveToElement(registrationEmpUnemploymentPage.haveYouAcquiredAnotherBsn).perform();
+        registrationEmpUnemploymentPage.haveYouAcquiredAnotherBsn.click();
+    }
+
     @And("user select Are you liable under FUTA")
     public void userSelectAreYouLiableUnderFUTA() {
         actions.moveToElement(registrationEmpUnemploymentPage.futa).perform();
@@ -446,4 +452,13 @@ public class Registration_StepDef {
         wait.until(ExpectedConditions.elementToBeClickable(uiTaxTaxContactAndWorksitePage.saveAndContinueBtn));
         uiTaxTaxContactAndWorksitePage.saveAndContinueBtn.click();
     }
+
+    @And("user click to Next Button")
+    public void userClickToNextButton() {
+        actions.moveToElement(registrationEmpUnemploymentPage.nextBtn).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(registrationEmpUnemploymentPage.nextBtn));
+        registrationEmpUnemploymentPage.nextBtn.click();
+    }
+
+
 }

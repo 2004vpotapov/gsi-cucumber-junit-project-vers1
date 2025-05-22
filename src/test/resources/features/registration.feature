@@ -62,6 +62,7 @@ Given the user is on the home page
   And user enter Phone Number of Person Responsible
   And user select Have you previously had an account
   And user select Have you reorganized
+  And use select Have you acquired another business
   And user select Are you liable under FUTA
   And user select Has your organization employed
   And user select Did you or will you have total wages paid
@@ -77,6 +78,9 @@ Given the user is on the home page
   And use enter Email Address for Owner
   And user enter Confirm Email Address for Owner
   And user click Save and Continue button fo Owner
+  #Registration/Emp/Unemployment
+  And user click to Next Button
+
 
 
 

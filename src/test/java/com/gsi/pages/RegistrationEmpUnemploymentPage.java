@@ -56,6 +56,9 @@ public class RegistrationEmpUnemploymentPage {
     @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbReorganizedRestructured_1")
     public WebElement haveYouReorganized;
 
+    @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbAcquiredAnotherBusiness_1")
+    public WebElement haveYouAcquiredAnotherBsn;
+
     @FindBy(id="ctl00_Main_content_ucTaxQuestionnaire_rbFUTA_1")
     public WebElement futa;
 
@@ -73,6 +76,9 @@ public class RegistrationEmpUnemploymentPage {
 
     @FindBy(id="ctl00_Main_content_ucOwners_lnkAddOwner")
     public WebElement addOwnerLink;
+
+    @FindBy(id="ctl00_Main_content_btnNext")
+    public WebElement nextBtn;
 
 
 }
