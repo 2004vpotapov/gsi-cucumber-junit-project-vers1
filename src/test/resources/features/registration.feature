@@ -101,6 +101,12 @@ Given the user is on the home page
   And user click to Save Btn for Tax Certification
   #Registration/Emp/UIRegInstructions
   And user click Continue button for Registration Complete
+  #Dashboards/DefaultEmp
+  And user click Close Btn
+  And user click to View your Profile
+  #Folders/Emp/RegFolder
+
+
 
 
 

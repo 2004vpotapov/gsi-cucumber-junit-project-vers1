@@ -51,6 +51,8 @@ public class Registration_StepDef {
     RegistrationEmpTaxCertificationPage registrationEmpTaxCertificationPage = new RegistrationEmpTaxCertificationPage();
 
     RegistrationEmpUIRegInstructionsPage registrationEmpUIRegInstructionsPage = new RegistrationEmpUIRegInstructionsPage();
+
+    DashboardsDefaultEmpPage dashboardsDefaultEmpPage = new DashboardsDefaultEmpPage();
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -594,7 +596,18 @@ public class Registration_StepDef {
         wait.until(ExpectedConditions.elementToBeClickable(registrationEmpUIRegInstructionsPage.continueBtn));
         actions.moveToElement(registrationEmpUIRegInstructionsPage.continueBtn).perform();
         registrationEmpUIRegInstructionsPage.continueBtn.click();
+    }
+
+    @And("user click Close Btn")
+    public void userClickCloseBtn() {
+        wait.until(ExpectedConditions.elementToBeClickable(dashboardsDefaultEmpPage.closeBtn));
+        dashboardsDefaultEmpPage.closeBtn.click();
+    }
 
 
+    @And("user click to View your Profile")
+    public void userClickToViewYourProfile() {
+        wait.until(ExpectedConditions.elementToBeClickable(dashboardsDefaultEmpPage.viewYourProfile));
+        dashboardsDefaultEmpPage.viewYourProfile.click();
     }
 }
