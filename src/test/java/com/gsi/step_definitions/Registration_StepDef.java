@@ -570,17 +570,6 @@ public class Registration_StepDef {
         wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxCertificationPage.signInField));
         actions.moveToElement(registrationEmpTaxCertificationPage.signInField).perform();
         registrationEmpTaxCertificationPage.signInField.click();
-/*
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollBy(0, 100)");
-
-        registrationEmpTaxCertificationPage.signInField.click();
-
-        js.executeScript("window.scrollBy(0, 100)");
-
-        registrationEmpTaxCertificationPage.signInField.click();
-
- */
 
     }
     @And("user click to Save Btn for Tax Certification")
