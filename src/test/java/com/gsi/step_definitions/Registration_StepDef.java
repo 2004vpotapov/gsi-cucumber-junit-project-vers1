@@ -39,6 +39,10 @@ public class Registration_StepDef {
 
     RegistrationEmpUnemploymentPage registrationEmpUnemploymentPage = new RegistrationEmpUnemploymentPage();
 
+    UiTaxTaxContactAndWorksitePage uiTaxTaxContactAndWorksitePage = new UiTaxTaxContactAndWorksitePage();
+
+    String emailAddressOwner;
+
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -145,6 +149,7 @@ public class Registration_StepDef {
 
     @And("user enter Legal Company name")
     public void userEnterLegalCompanyName() {
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpDefaultPage.legalCompanyNameInputBox));
         registrationEmpDefaultPage.legalCompanyNameInputBox.sendKeys(faker.company().name());
     }
 
@@ -218,6 +223,7 @@ public class Registration_StepDef {
 
     @And("user click to link Industry Title NAICS")
     public void userClickToLinkIndustryTitleNAICS() {
+        BrowserUtils.waitFor(5);
         actions.moveToElement(registrationEmpDefaultPage.searchForIndustryCode).perform();
         BrowserUtils.waitFor(2);
         registrationEmpDefaultPage.searchForIndustryCode.click();
@@ -268,6 +274,7 @@ public class Registration_StepDef {
 
     @And("use click to Use Primary CheckBox")
     public void useClickToUsePrimaryCheckBox() {
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxContactsPage.usePrimaryCheckBox));
         actions.moveToElement(registrationEmpTaxContactsPage.usePrimaryCheckBox).perform();
         wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxContactsPage.usePrimaryCheckBox));
         actions.moveToElement(registrationEmpTaxContactsPage.usePrimaryCheckBox).perform();
@@ -389,6 +396,54 @@ public class Registration_StepDef {
     public void userClickAddOwnerLink() {
         actions.moveToElement( registrationEmpUnemploymentPage.addOwnerLink).perform();
         registrationEmpUnemploymentPage.addOwnerLink.click();
+    }
 
+    @And("user enter First Name for Owner")
+    public void userEnterFirstNameForOwner() {
+        uiTaxTaxContactAndWorksitePage.firstName.sendKeys(faker.name().firstName());
+    }
+
+    @And("user enter Last Name for Owner")
+    public void userEnterLastNameForOwner() {
+        uiTaxTaxContactAndWorksitePage.lastName.sendKeys(faker.name().lastName());
+    }
+
+    @And("user enter Job Title for Owner")
+    public void userEnterJobTitleForOwner() {
+        uiTaxTaxContactAndWorksitePage.jobTitle.sendKeys(faker.job().title());
+    }
+
+    @And("user enter SSN for Owner")
+    public void userEnterSSNForOwner() {
+        actions.moveToElement(uiTaxTaxContactAndWorksitePage.ssn).perform();
+        uiTaxTaxContactAndWorksitePage.ssn.sendKeys(faker.idNumber().ssnValid());
+    }
+
+    @And("user enter Phone for Owner")
+    public void userEnterPhoneForOwner() {
+        actions.moveToElement( uiTaxTaxContactAndWorksitePage.phoneFirstBox).perform();
+        uiTaxTaxContactAndWorksitePage.phoneFirstBox.sendKeys("123");
+        uiTaxTaxContactAndWorksitePage.phoneSecondBox.sendKeys("123");
+        uiTaxTaxContactAndWorksitePage.phoneThirdBox.sendKeys("1234");
+    }
+
+    @And("use enter Email Address for Owner")
+    public void useEnterEmailAddressForOwner() {
+        actions.moveToElement(uiTaxTaxContactAndWorksitePage.emailAddress);
+        emailAddressOwner = faker.internet().emailAddress();
+        uiTaxTaxContactAndWorksitePage.emailAddress.sendKeys(emailAddressOwner);
+    }
+
+    @And("user enter Confirm Email Address for Owner")
+    public void userEnterConfirmEmailAddressForOwner() {
+        actions.moveToElement(uiTaxTaxContactAndWorksitePage.confirmEmailAddress);
+        uiTaxTaxContactAndWorksitePage.confirmEmailAddress.sendKeys(emailAddressOwner);
+    }
+
+    @And("user click Save and Continue button fo Owner")
+    public void userClickSaveAndContinueButtonFoOwner() {
+        actions.moveToElement(uiTaxTaxContactAndWorksitePage.saveAndContinueBtn).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(uiTaxTaxContactAndWorksitePage.saveAndContinueBtn));
+        uiTaxTaxContactAndWorksitePage.saveAndContinueBtn.click();
     }
 }

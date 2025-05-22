@@ -68,6 +68,22 @@ Given the user is on the home page
   And user select Earliast Quater
   And user enter Year
   And user click Add Owner link
+  #Ui/tax/TaxContactAndWorksite
+  And user enter First Name for Owner
+  And user enter Last Name for Owner
+  And user enter Job Title for Owner
+  And user enter SSN for Owner
+  And user enter Phone for Owner
+  And use enter Email Address for Owner
+  And user enter Confirm Email Address for Owner
+  And user click Save and Continue button fo Owner
+
+
+
+
+
+
+
 
 
 
