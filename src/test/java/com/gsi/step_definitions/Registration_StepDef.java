@@ -43,6 +43,8 @@ public class Registration_StepDef {
 
     String emailAddressOwner;
 
+    RegistrationEmpTaxGeneralInformationPage registrationEmpTaxGeneralInformationPage = new RegistrationEmpTaxGeneralInformationPage();
+
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -411,6 +413,7 @@ public class Registration_StepDef {
 
     @And("user enter Last Name for Owner")
     public void userEnterLastNameForOwner() {
+        wait.until(ExpectedConditions.visibilityOf(uiTaxTaxContactAndWorksitePage.lastName));
         uiTaxTaxContactAndWorksitePage.lastName.sendKeys(faker.name().lastName());
     }
 
@@ -461,4 +464,74 @@ public class Registration_StepDef {
     }
 
 
+    @And("user select Do you have a physical location in Nebraska YES")
+    public void userSelectDoYouHaveAPhysicalLocationInNebraskaYES() {
+        wait.until(ExpectedConditions.elementToBeClickable(registrationEmpTaxGeneralInformationPage.physicalLocationNE));
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.physicalLocationNE).perform();
+        registrationEmpTaxGeneralInformationPage.physicalLocationNE.click();
+    }
+
+    @And("user enter Address")
+    public void userEnterAddress() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.address).perform();
+        registrationEmpTaxGeneralInformationPage.address.sendKeys(ConfigurationReader.getProperty("address"));
+    }
+
+    @And("user enter Zip Code for General Employment Information")
+    public void userEnterZipCodeForGeneralEmploymentInformation() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.zipCode).perform();
+        registrationEmpTaxGeneralInformationPage.zipCode.sendKeys(ConfigurationReader.getProperty("zipCode"));
+    }
+
+    @And("user select Do you have independent contractors in your business")
+    public void userSelectDoYouHaveIndependentContractorsInYourBusiness() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.independentContractors).perform();
+        registrationEmpTaxGeneralInformationPage.independentContractors.click();
+    }
+
+    @And("user enter Describe, in detail, your business activity in NE")
+    public void userEnterDescribeInDetailYourBusinessActivityInNE() {
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxGeneralInformationPage.describeDetailBusinessActivity));
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.describeDetailBusinessActivity).perform();
+        registrationEmpTaxGeneralInformationPage.describeDetailBusinessActivity.sendKeys("Test");
+    }
+
+    @And("user enter Provide the goods or the services provided")
+    public void userEnterProvideTheGoodsOrTheServicesProvided() {
+        wait.until(ExpectedConditions.visibilityOf(registrationEmpTaxGeneralInformationPage.provideGoods));
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.provideGoods).perform();
+        registrationEmpTaxGeneralInformationPage.provideGoods.sendKeys("Test");
+    }
+
+    @And("user enter What are the most common job titles")
+    public void userEnterWhatAreTheMostCommonJobTitles() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.commonJobTitles).perform();
+        registrationEmpTaxGeneralInformationPage.commonJobTitles.sendKeys(faker.job().title());
+    }
+
+    @And("user enter Full Name")
+    public void userEnterFullName() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.name).perform();
+        registrationEmpTaxGeneralInformationPage.name.sendKeys(faker.name().fullName());
+    }
+
+    @And("user enter Phone Number who can provide specific information")
+    public void userEnterPhoneNumberWhoCanProvideSpecificInformation() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.phoneNumberFirstBox).perform();
+        registrationEmpTaxGeneralInformationPage.phoneNumberFirstBox.sendKeys("123");
+        registrationEmpTaxGeneralInformationPage.phoneNumberSecondBox.sendKeys("123");
+        registrationEmpTaxGeneralInformationPage.phoneNumberFThirdBox.sendKeys("1234");
+    }
+
+    @And("user select Is the primary purpose of the employee")
+    public void userSelectIsThePrimaryPurposeOfTheEmployee() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.primaryPurpose).perform();
+        registrationEmpTaxGeneralInformationPage.primaryPurpose.click();
+    }
+
+    @And("user click Next Btn for General Employment Information Page")
+    public void userClickNextBtnForGeneralEmploymentInformationPage() {
+        actions.moveToElement(registrationEmpTaxGeneralInformationPage.nextBtn).perform();
+        registrationEmpTaxGeneralInformationPage.nextBtn.click();
+    }
 }

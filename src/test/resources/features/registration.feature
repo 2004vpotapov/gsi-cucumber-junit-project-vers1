@@ -80,6 +80,20 @@ Given the user is on the home page
   And user click Save and Continue button fo Owner
   #Registration/Emp/Unemployment
   And user click to Next Button
+  #Registration/Emp/TaxGeneralInformation
+  And user select Do you have a physical location in Nebraska YES
+  And user enter Address
+  And user enter Zip Code for General Employment Information
+  And user select Do you have independent contractors in your business
+  And user enter Describe, in detail, your business activity in NE
+  And user enter Provide the goods or the services provided
+  And user enter What are the most common job titles
+  And user enter Full Name
+  And user enter Phone Number who can provide specific information
+  And user select Is the primary purpose of the employee
+  And user click Next Btn for General Employment Information Page
+
+
 
 
 
