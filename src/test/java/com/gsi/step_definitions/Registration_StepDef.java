@@ -74,12 +74,14 @@ public class Registration_StepDef {
     //Registration/Emp/RegistrationType page=====================================================
     @And("use click Close button on a Red banner")
     public void useClickCloseButtonOnARedBanner() {
+
         registrationEmpRegistrationTypePage.closeBtn.click();
     }
 
     @And("user click Direct Representative of your Organization checkBox")
     public void userClickDirectRepresentativeOfYourOrganizationCheckBox() {
         wait.until(ExpectedConditions.elementToBeClickable(registrationEmpRegistrationTypePage.directRepresentativeOfYourOrganizationRadioBtn));
+        BrowserUtils.waitFor(5);
         actions.moveToElement(registrationEmpRegistrationTypePage.directRepresentativeOfYourOrganizationRadioBtn).click().perform();
 
     }
@@ -87,7 +89,7 @@ public class Registration_StepDef {
     @And("user click Next button")
     public void userClickNextButton() {
         wait.until(ExpectedConditions.elementToBeClickable(registrationEmpRegistrationTypePage.nextBtn));
-        BrowserUtils.waitFor(5);
+     //   BrowserUtils.waitFor(5);
         actions.moveToElement(registrationEmpRegistrationTypePage.nextBtn).pause(1000).click().perform();
 
     }
