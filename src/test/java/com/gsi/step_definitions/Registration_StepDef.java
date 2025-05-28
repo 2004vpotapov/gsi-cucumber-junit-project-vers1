@@ -25,6 +25,7 @@ public class Registration_StepDef {
 
     Faker faker = new Faker();
     String username;
+
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
     DefaultPage defaultPage = new DefaultPage();
     LoginIntro2Page loginIntro2Page = new LoginIntro2Page();
@@ -81,7 +82,7 @@ public class Registration_StepDef {
     @And("user click Direct Representative of your Organization checkBox")
     public void userClickDirectRepresentativeOfYourOrganizationCheckBox() {
         wait.until(ExpectedConditions.elementToBeClickable(registrationEmpRegistrationTypePage.directRepresentativeOfYourOrganizationRadioBtn));
-        BrowserUtils.waitFor(5);
+       // BrowserUtils.waitFor(5);
         actions.moveToElement(registrationEmpRegistrationTypePage.directRepresentativeOfYourOrganizationRadioBtn).click().perform();
 
     }
@@ -134,7 +135,8 @@ public class Registration_StepDef {
     //Registration/Emp/Default===================================================================
     @And("user enter User name")
     public void userEnterUserName() {
-        username = faker.name().username();
+        //username = faker.name().username();
+        username = "GSIUIVP_" + faker.number().numberBetween(10000,99999);
         registrationEmpDefaultPage.useNameInputBox.sendKeys(username);
     }
 
@@ -163,15 +165,18 @@ public class Registration_StepDef {
     public void userEnterLegalCompanyName() {
         wait.until(ExpectedConditions.visibilityOf(registrationEmpDefaultPage.legalCompanyNameInputBox));
         registrationEmpDefaultPage.legalCompanyNameInputBox.sendKeys(faker.company().name());
+
     }
 
     @And("user enter Trade Name")
     public void userEnterTradeName() {
+
         registrationEmpDefaultPage.tradeNameInputBox.sendKeys(faker.company().name());
     }
 
     @And("user enter ZipCode")
     public void userEnterZipCode() {
+
         registrationEmpDefaultPage.zipCode.sendKeys(ConfigurationReader.getProperty("zipCode"));
     }
 
@@ -207,14 +212,19 @@ public class Registration_StepDef {
     }
     @When("user enter Last Name")
     public void user_enter_last_name() {
+
         registrationEmpDefaultPage.lastName.sendKeys(faker.name().lastName());
     }
 
     @When("user enter Primary Phone")
     public void user_enter_primary_phone() {
-        registrationEmpDefaultPage.phoneFirstInputBox.sendKeys("123");
-        registrationEmpDefaultPage.phoneSecondInputBox.sendKeys("123");
-        registrationEmpDefaultPage.phoneThirdInputBox.sendKeys("1234");
+        String number1= String.valueOf(faker.number().numberBetween(100,999));
+        String number2= String.valueOf(faker.number().numberBetween(100,999));
+        String number3= String.valueOf(faker.number().numberBetween(1000,9999));
+
+        registrationEmpDefaultPage.phoneFirstInputBox.sendKeys(number1);
+        registrationEmpDefaultPage.phoneSecondInputBox.sendKeys(number2);
+        registrationEmpDefaultPage.phoneThirdInputBox.sendKeys(number3);
     }
     @When("user enter Contact Email Address")
     public void user_enter_contact_email_address() {
