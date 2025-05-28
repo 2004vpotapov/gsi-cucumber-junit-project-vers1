@@ -54,6 +54,13 @@ public class Registration_StepDef {
     RegistrationEmpUIRegInstructionsPage registrationEmpUIRegInstructionsPage = new RegistrationEmpUIRegInstructionsPage();
 
     DashboardsDefaultEmpPage dashboardsDefaultEmpPage = new DashboardsDefaultEmpPage();
+
+    String numberPhoneBox1;
+    String numberPhoneBox2;
+    String numberPhoneBox3;
+
+    String  numberEMP;
+
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
 
@@ -90,7 +97,7 @@ public class Registration_StepDef {
     @And("user click Next button")
     public void userClickNextButton() {
         wait.until(ExpectedConditions.elementToBeClickable(registrationEmpRegistrationTypePage.nextBtn));
-     //   BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(5);
         actions.moveToElement(registrationEmpRegistrationTypePage.nextBtn).pause(1000).click().perform();
 
     }
@@ -136,7 +143,7 @@ public class Registration_StepDef {
     @And("user enter User name")
     public void userEnterUserName() {
         //username = faker.name().username();
-        username = "GSIUIVP_" + faker.number().numberBetween(10000,99999);
+        username = "GSIUIVP_" + faker.number().numberBetween(100000,999999);
         registrationEmpDefaultPage.useNameInputBox.sendKeys(username);
     }
 
@@ -164,7 +171,8 @@ public class Registration_StepDef {
     @And("user enter Legal Company name")
     public void userEnterLegalCompanyName() {
         wait.until(ExpectedConditions.visibilityOf(registrationEmpDefaultPage.legalCompanyNameInputBox));
-        registrationEmpDefaultPage.legalCompanyNameInputBox.sendKeys(faker.company().name());
+        //registrationEmpDefaultPage.legalCompanyNameInputBox.sendKeys(faker.company().name());
+        registrationEmpDefaultPage.legalCompanyNameInputBox.sendKeys(username);
 
     }
 
@@ -218,13 +226,14 @@ public class Registration_StepDef {
 
     @When("user enter Primary Phone")
     public void user_enter_primary_phone() {
-        String number1= String.valueOf(faker.number().numberBetween(100,999));
-        String number2= String.valueOf(faker.number().numberBetween(100,999));
-        String number3= String.valueOf(faker.number().numberBetween(1000,9999));
 
-        registrationEmpDefaultPage.phoneFirstInputBox.sendKeys(number1);
-        registrationEmpDefaultPage.phoneSecondInputBox.sendKeys(number2);
-        registrationEmpDefaultPage.phoneThirdInputBox.sendKeys(number3);
+        numberPhoneBox1= String.valueOf(faker.number().numberBetween(100,999));
+        numberPhoneBox2= String.valueOf(faker.number().numberBetween(100,999));
+        numberPhoneBox3= String.valueOf(faker.number().numberBetween(1000,9999));
+
+        registrationEmpDefaultPage.phoneFirstInputBox.sendKeys(numberPhoneBox1);
+        registrationEmpDefaultPage.phoneSecondInputBox.sendKeys(numberPhoneBox2);
+        registrationEmpDefaultPage.phoneThirdInputBox.sendKeys(numberPhoneBox3);
     }
     @When("user enter Contact Email Address")
     public void user_enter_contact_email_address() {
@@ -330,17 +339,19 @@ public class Registration_StepDef {
 
     @And("user enter Number of Employees at Registration")
     public void userEnterNumberOfEmployeesAtRegistration() {
-        registrationEmpUnemploymentPage.numberOfEmployeesAtRegistration.sendKeys("10");
-
+        numberEMP = String.valueOf(faker.number().numberBetween(3,100));
+        registrationEmpUnemploymentPage.numberOfEmployeesAtRegistration.sendKeys(numberEMP);
     }
 
     @And("user enter Number of Wokers")
     public void userEnterNumberOfWokers() {
-        registrationEmpUnemploymentPage.numberOfWokers.sendKeys("10");
+
+        registrationEmpUnemploymentPage.numberOfWokers.sendKeys(numberEMP);
     }
 
     @And("user enter Date of First Paid")
     public void userEnterDateOfFirstPaid() {
+
         registrationEmpUnemploymentPage.dateOfFirstPaid.sendKeys("1/15/2023");
     }
 
@@ -368,9 +379,9 @@ public class Registration_StepDef {
     @And("user enter Phone Number of Person Responsible")
     public void userEnterPhoneNumberOfPersonResponsible() {
         actions.moveToElement(registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleFirst).perform();
-        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleFirst.sendKeys("123");
-        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleSecond.sendKeys("123");
-        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleThird.sendKeys("1234");
+        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleFirst.sendKeys(numberPhoneBox1);
+        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleSecond.sendKeys(numberPhoneBox2);
+        registrationEmpUnemploymentPage.phoneNumberOfPersonResponsibleThird.sendKeys(numberPhoneBox3);
     }
 
     @And("user select Have you previously had an account")
@@ -452,9 +463,9 @@ public class Registration_StepDef {
     @And("user enter Phone for Owner")
     public void userEnterPhoneForOwner() {
         actions.moveToElement( uiTaxTaxContactAndWorksitePage.phoneFirstBox).perform();
-        uiTaxTaxContactAndWorksitePage.phoneFirstBox.sendKeys("123");
-        uiTaxTaxContactAndWorksitePage.phoneSecondBox.sendKeys("123");
-        uiTaxTaxContactAndWorksitePage.phoneThirdBox.sendKeys("1234");
+        uiTaxTaxContactAndWorksitePage.phoneFirstBox.sendKeys(numberPhoneBox1);
+        uiTaxTaxContactAndWorksitePage.phoneSecondBox.sendKeys(numberPhoneBox2);
+        uiTaxTaxContactAndWorksitePage.phoneThirdBox.sendKeys(numberPhoneBox3);
     }
 
     @And("use enter Email Address for Owner")
@@ -539,9 +550,9 @@ public class Registration_StepDef {
     @And("user enter Phone Number who can provide specific information")
     public void userEnterPhoneNumberWhoCanProvideSpecificInformation() {
         actions.moveToElement(registrationEmpTaxGeneralInformationPage.phoneNumberFirstBox).perform();
-        registrationEmpTaxGeneralInformationPage.phoneNumberFirstBox.sendKeys("123");
-        registrationEmpTaxGeneralInformationPage.phoneNumberSecondBox.sendKeys("123");
-        registrationEmpTaxGeneralInformationPage.phoneNumberFThirdBox.sendKeys("1234");
+        registrationEmpTaxGeneralInformationPage.phoneNumberFirstBox.sendKeys(numberPhoneBox1);
+        registrationEmpTaxGeneralInformationPage.phoneNumberSecondBox.sendKeys(numberPhoneBox2);
+        registrationEmpTaxGeneralInformationPage.phoneNumberFThirdBox.sendKeys(numberPhoneBox3);
     }
 
     @And("user select Is the primary purpose of the employee")
