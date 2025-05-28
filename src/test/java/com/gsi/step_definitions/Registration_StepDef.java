@@ -27,8 +27,11 @@ public class Registration_StepDef {
     String username;
 
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+
     DefaultPage defaultPage = new DefaultPage();
+
     LoginIntro2Page loginIntro2Page = new LoginIntro2Page();
+
     RegistrationEmpRegistrationTypePage registrationEmpRegistrationTypePage = new RegistrationEmpRegistrationTypePage();
 
     RegistrationEmpTaxRegistrationPage registrationEmpTaxRegistrationPage = new RegistrationEmpTaxRegistrationPage();
@@ -63,8 +66,8 @@ public class Registration_StepDef {
 
     @Given("the user is on the home page")
     public void the_user_is_on_the_home_page() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("url_uat_ne"));
 
-        Driver.getDriver().get("https://uat-app-vos31000000.geosolinc.com");
     }
     //default page=============================================================================
     @When("user click to SignInRegister link")
@@ -615,7 +618,6 @@ public class Registration_StepDef {
         wait.until(ExpectedConditions.elementToBeClickable(dashboardsDefaultEmpPage.closeBtn));
         dashboardsDefaultEmpPage.closeBtn.click();
     }
-
 
     @And("user click to View your Profile")
     public void userClickToViewYourProfile() {
