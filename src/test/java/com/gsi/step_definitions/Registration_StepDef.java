@@ -72,7 +72,6 @@ public class Registration_StepDef {
     //default page=============================================================================
     @When("user click to SignInRegister link")
     public void userClickToSignInRegisterLink() {
-
         actions.moveToElement(defaultPage.signInRegisterButton).click().perform();
     }
 
@@ -85,7 +84,6 @@ public class Registration_StepDef {
     //Registration/Emp/RegistrationType page=====================================================
     @And("use click Close button on a Red banner")
     public void useClickCloseButtonOnARedBanner() {
-
         registrationEmpRegistrationTypePage.closeBtn.click();
     }
 
@@ -145,7 +143,6 @@ public class Registration_StepDef {
     //Registration/Emp/Default===================================================================
     @And("user enter User name")
     public void userEnterUserName() {
-        //username = faker.name().username();
         username = "GSIUIVP_" + faker.number().numberBetween(100000,999999);
         registrationEmpDefaultPage.useNameInputBox.sendKeys(username);
     }
@@ -181,13 +178,11 @@ public class Registration_StepDef {
 
     @And("user enter Trade Name")
     public void userEnterTradeName() {
-
         registrationEmpDefaultPage.tradeNameInputBox.sendKeys(faker.company().name());
     }
 
     @And("user enter ZipCode")
     public void userEnterZipCode() {
-
         registrationEmpDefaultPage.zipCode.sendKeys(ConfigurationReader.getProperty("zipCode"));
     }
 
@@ -218,12 +213,10 @@ public class Registration_StepDef {
     }
     @When("user enter Fist Name")
     public void user_enter_fist_name() {
-
         registrationEmpDefaultPage.firstName.sendKeys(faker.name().firstName());
     }
     @When("user enter Last Name")
     public void user_enter_last_name() {
-
         registrationEmpDefaultPage.lastName.sendKeys(faker.name().lastName());
     }
 
@@ -348,13 +341,11 @@ public class Registration_StepDef {
 
     @And("user enter Number of Wokers")
     public void userEnterNumberOfWokers() {
-
         registrationEmpUnemploymentPage.numberOfWokers.sendKeys(numberEMP);
     }
 
     @And("user enter Date of First Paid")
     public void userEnterDateOfFirstPaid() {
-
         registrationEmpUnemploymentPage.dateOfFirstPaid.sendKeys("1/15/2023");
     }
 
